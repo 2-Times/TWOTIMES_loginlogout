@@ -1,0 +1,24 @@
+<?php
+function twotimesloginlogout_block($op = 'list', $delta = 0, $edit = array()) {
+  global $user;
+
+  switch ($op) {
+    case 'list':
+      $blocks = array();
+      $block[0]['info'] = t('Loginlogout');
+    case 'view':
+        $block['subject'] = t('Loginlogout');
+		
+		if ($user->uid == 0) {
+			$blockcontent = l(t('Log-in'), 'user/login', array('rel' => 'nofollow'));
+			}
+		else {
+			$blockcontent = l(t('Log-out'), 'logout', array('rel' => 'nofollow'));
+			}
+	   		$block['content'] = $blockcontent;
+        	return $block; 
+    	
+  }
+}
+
+?>

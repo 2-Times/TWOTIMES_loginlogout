@@ -1,13 +1,15 @@
 <?php
 function twotimesloginlogout_block($op = 'list', $delta = 0, $edit = array()) {
   global $user;
+  $block = array();
 
   switch ($op) {
     case 'list':
-      $blocks = array();
-      $block[0]['info'] = t('Loginlogout');
+        $block['loginlogout']['info'] = t('Loginlogout');
+        break;
+
     case 'view':
-        $block['subject'] = t('Loginlogout');
+        $blockcontent = '';
 		
 		if ($user->uid == 0) {
 			$blockcontent = l(t('Log-in'), 'user/login', array('rel' => 'nofollow'));
@@ -15,10 +17,10 @@ function twotimesloginlogout_block($op = 'list', $delta = 0, $edit = array()) {
 		else {
 			$blockcontent = l(t('Log-out'), 'logout', array('rel' => 'nofollow'));
 			}
+			
+	        $block['subject'] = t('Loginlogout');			
 	   		$block['content'] = $blockcontent;
-        	return $block; 
-    	
+	    break;	
   }
+	return $block;
 }
-
-?>

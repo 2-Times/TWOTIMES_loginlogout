@@ -1,4 +1,4 @@
 name = twotimesloginlogout
-description = A new module for testing
+description = A module that creates a block that shows login/logout links depending on whether the user is logged in or out.
 package = Other
 core = 6.x
